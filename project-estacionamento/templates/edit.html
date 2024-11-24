@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}Editar Carro{% endblock %}
+
+{% block content %}
+<h2 class="page-title">Editar Carro</h2>
+<form action="/edit/{{ carro.id }}" method="post" class="form">
+    <div class="form-group">
+        <label for="placa" class="form-label">Placa:</label>
+        <input type="text" id="placa" name="placa" class="form-input" value="{{ carro.placa }}" required>
+    </div>
+    <div class="form-group">
+        <label for="modelo" class="form-label">Modelo:</label>
+        <input type="text" id="modelo" name="modelo" class="form-input" value="{{ carro.modelo }}" required>
+    </div>
+    <div class="form-group">
+        <label for="vaga" class="form-label">Vaga:</label>
+        <input type="number" id="vaga" name="vaga" class="form-input" value="{{ carro.vaga }}" min="1" max="20" required>
+    </div>
+    <div class="form-actions">
+        <button type="submit" class="button button-submit">Salvar Alterações</button>
+        <a href="/" class="button button-back">Cancelar</a>
+    </div>
+</form>
+{% endblock %}
