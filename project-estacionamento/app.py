@@ -7,7 +7,7 @@ app.config.from_object(Config)
 
 db.init_app(app)
 
-@app.route('/add', methods=['GET','POST'])
+@app.route('/add', methods=['GET','POST']) #Rota para adicionar um carro
 def add_carro():
     if request.method == 'POST':
         placa = request.form.get('placa')
@@ -27,7 +27,7 @@ def add_carro():
     
     return render_template('add.html') #Renderizar formulario para o carro
 
-@app.route('/edit/<int:id>',methods = ['GET','POST'])
+@app.route('/edit/<int:id>',methods = ['GET','POST']) #Rota para editar um carro com base no ID
 def edit_carro(id):
     carro = Carro.query.get_or_404(id)
     if request.method == 'POST': #Atualiza dados do carro
@@ -43,3 +43,10 @@ def edit_carro(id):
         return redirect('/')
 
     return render_template('edit.html',carro=carro) #Renderizar o formulário para editar
+
+@app.route('/delete/<int>:id>',methods=['POST']) #Rota para excluir um carro com base no ID
+def delete_carro(id):
+    carro = Carro.query.get_or_404(id)
+    db.session.delete(carro)
+    db.session.commit()
+    return redirect('/')
