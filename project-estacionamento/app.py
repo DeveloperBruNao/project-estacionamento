@@ -59,3 +59,8 @@ def index():
     vagas_disponiveis = total_vagas - carros_estacionado
     porcentagem_ocupada = (carros_estacionado / total_vagas) * 100 if total_vagas else 0
     return render_template('index.html',carros=carros,vagas_disponiveis=vagas_disponiveis,porcentagem_ocupada=porcentagem_ocupada)
+
+if __name__ == '__main__': #Config pra rodar o app
+    with app.app_context():
+        db.create_all() #Vendo se as tabelas estão criadas
+    app.run(debug=True)
