@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}Lista de Carros{% endblock %}
+
+{% block content %}
+<h2 class="page-title">Carros estacionados></h2>
+<table class="table">
+    <thead>
+        <tr class="table-header">
+            <th class="table-header-cell">ID</th>
+            <th class="table-header-cell">Placa</th>
+            <th class="table-header-cell">Modelo</th>
+            <th class="table-header-cell">Vaga</th>
+            <th class="table-header-cell">Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        { % for carro in carros}
+        <tr class="table-row">
+            <td class="table-cell">{{ carro.id }}</td>
+            <td class="table-cell">{{ carro.placa }}</td>
+            <td class="table-cell">{{ carro.modelo }}</td>
+            <td class="table-cell">{{ carro.vaga }}</td>
+            <td class="table-cell actions-cell">
+                <a href="/edit/{{ carro.id }}" class="button button-edit">Editar</a>
+                <form action="/delete/{{ carro.id }}" method="post" class="inline-form">
+                    <button type="submit" class="button button-delete">Excluir</button>
+                </form>
+            </td>
+        </tr>
+        {% end for %}
+    </tbody>
+</table>
+
+<p class="availability-message"> Vagas disponiveis: {{ vagas_disponiveis }}</p>
+{% endblock  %}
