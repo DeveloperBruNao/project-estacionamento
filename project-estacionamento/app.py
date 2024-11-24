@@ -26,3 +26,20 @@ def add_carro():
         return redirect('/')
     
     return render_template('add.html') #Renderizar formulario para o carro
+
+@app.route('/edit/<int:id>',methods = ['GET','POST'])
+def edit_carro(id):
+    carro = Carro.query.get_or_404(id)
+    if request.method == 'POST': #Atualiza dados do carro
+        nova_vaga = request.form['vaga']
+    
+        if nova_vaga != str(carro.vaga) and Carro.query.filter_by(vaga=nova_vaga).first():
+            return "Erro: A nova vaga está ocupada!",400
+        
+        carro.placa = request.form['placa']
+        carro.modelo = request.form['modelo']
+        carro.vaga = nova_vaga
+        db.session.commit()
+        return redirect('/')
+
+    return render_template('edit.html',carro=carro) #Renderizar o formulário para editar
