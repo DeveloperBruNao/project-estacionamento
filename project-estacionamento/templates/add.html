@@ -12,8 +12,23 @@
     </header>
     <main class="main-content">
         <form action="/add" method="post" class="form">
-            <div class="form-group"></div>
-            
+            <div class="form-group">
+                <label for="placa" class="label">Placa:</label>
+                <input type="text" name="placa" id="placa" class="input" required>
+            </div>
+            <div class="form-group">
+                <label for="modelo" class="label">Modelo:</label>
+                <input type="text" name="modelo" id="modelo" class="input" required>
+            </div>
+            <div class="form-group">
+                <label for="vaga" class="label">Vaga:</label>
+                <input type="number" name="vaga" id="vaga" class="input" min="1" max="20">
+            </div>
+            <div class="form-actions">
+                <button type="submit" class="button button-submit">Adicionar</button>
+                <a href="/" class="button button-back">Voltar</a>
+            </div>
+        </form>
     </main>
     
 </body>
