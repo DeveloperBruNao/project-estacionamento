@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Estacionamento{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="base-page">
+    <!-- Cabeçalho -->
+    <header class="header">
+        <h1 class="header-title">Sistema de Estacionamento</h1>
+        <nav class="navbar">
+            <a href="/" class="nav-link">Início</a>
+            <a href="/add" class="nav-link">Adicionar Carro</a>
+        </nav>
+    </header>
+
+    <!-- Conteúdo Principal -->
+    <main class="main-content">
+        {% block content %}
+        <!-- O conteúdo específico de cada página será inserido aqui -->
+        {% endblock %}
+    </main>
+
+    <!-- Rodapé -->
+    <footer class="footer">
+        <p class="footer-text">© 2024 Sistema de Estacionamento. Todos os direitos reservados.</p>
+    </footer>
+</body>
+</html>
