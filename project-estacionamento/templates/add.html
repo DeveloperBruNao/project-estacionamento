@@ -1,35 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adicionar Carro</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-</head>
-<body class="add-page">
-    <header class="header">
-        <h1 class="title">Adicionar Carro</h1>
-    </header>
-    <main class="main-content">
-        <form action="/add" method="post" class="form">
-            <div class="form-group">
-                <label for="placa" class="label">Placa:</label>
-                <input type="text" name="placa" id="placa" class="input" required>
-            </div>
-            <div class="form-group">
-                <label for="modelo" class="label">Modelo:</label>
-                <input type="text" name="modelo" id="modelo" class="input" required>
-            </div>
-            <div class="form-group">
-                <label for="vaga" class="label">Vaga:</label>
-                <input type="number" name="vaga" id="vaga" class="input" min="1" max="20">
-            </div>
-            <div class="form-actions">
-                <button type="submit" class="button button-submit">Adicionar</button>
-                <a href="/" class="button button-back">Voltar</a>
-            </div>
-        </form>
-    </main>
-    
-</body>
-</html>
+{% extends "base.html" %}
+
+{% block title %}Adicionar Carro{% endblock %}
+
+{% block content %}
+<h2>Adicionar Carro</h2>
+<form action="/add" method="post" class="form">
+    <div class="form-group">
+        <label for="placa" class="label">Placa:</label>
+        <input type="text" id="placa" name="placa" class="input" required>
+    </div>
+    <div class="form-group">
+        <label for="modelo" class="label">Modelo:</label>
+        <input type="text" id="modelo" name="modelo" class="input" required>
+    </div>
+    <div class="form-group">
+        <label for="vaga" class="label">Vaga:</label>
+        <input type="number" id="vaga" name="vaga" class="input" min="1" max="20" required>
+    </div>
+    <div class="form-actions">
+        <button type="submit" class="button button-submit">Adicionar</button>
+        <a href="/" class="button button-back">Voltar</a>
+    </div>
+</form>
+{% endblock %}
