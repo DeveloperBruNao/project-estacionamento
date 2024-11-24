@@ -50,3 +50,12 @@ def delete_carro(id):
     db.session.delete(carro)
     db.session.commit()
     return redirect('/')
+
+@app.route('/') #Rota principal para listar os carros
+def index():
+    carros = Carro.query.all()
+    total_vagas = 20
+    carros_estacionado = len(carros)
+    vagas_disponiveis = total_vagas - carros_estacionado
+    porcentagem_ocupada = (carros_estacionado / total_vagas) * 100 if total_vagas else 0
+    return render_template('index.html',carros=carros,vagas_disponiveis=vagas_disponiveis,porcentagem_ocupada=porcentagem_ocupada)
