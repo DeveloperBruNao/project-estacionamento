@@ -3,7 +3,7 @@
 {% block title %}Lista de Carros{% endblock %}
 
 {% block content %}
-<h2 class="page-title">Carros estacionados></h2>
+<h2 class="page-title">Carros estacionados</h2>
 <table class="table">
     <thead>
         <tr class="table-header">
@@ -15,7 +15,7 @@
         </tr>
     </thead>
     <tbody>
-        { % for carro in carros}
+        {% for carro in carros %}
         <tr class="table-row">
             <td class="table-cell">{{ carro.id }}</td>
             <td class="table-cell">{{ carro.placa }}</td>
@@ -28,9 +28,9 @@
                 </form>
             </td>
         </tr>
-        {% end for %}
+        {% endfor %}
     </tbody>
 </table>
 
-<p class="availability-message"> Vagas disponiveis: {{ vagas_disponiveis }}</p>
-{% endblock  %}
+<p class="availability-message">Vagas disponíveis: {{ vagas_disponiveis }}</p>
+{% endblock %}
