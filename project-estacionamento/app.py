@@ -44,7 +44,7 @@ def edit_carro(id):
 
     return render_template('edit.html',carro=carro) #Renderizar o formulário para editar
 
-@app.route('/delete/<int>:id>',methods=['POST']) #Rota para excluir um carro com base no ID
+@app.route('/delete/<int:id>',methods=['POST']) #Rota para excluir um carro com base no ID
 def delete_carro(id):
     carro = Carro.query.get_or_404(id)
     db.session.delete(carro)
